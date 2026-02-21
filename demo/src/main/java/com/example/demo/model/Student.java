@@ -1,0 +1,28 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "students")
+public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
+
+    @Column(nullable = false, unique = true)
+    private String studentCode;
+
+    private LocalDate dateOfBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private ClassEntity clazz;
+
+    // getter/setter
+}
