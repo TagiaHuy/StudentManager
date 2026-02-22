@@ -3,9 +3,13 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -25,7 +29,7 @@ public class User {
 
     private LocalDateTime createdAt;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) // Thêm dòng này
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -37,6 +41,4 @@ public class User {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
-
-    // getter/setter
 }

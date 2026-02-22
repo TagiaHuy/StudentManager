@@ -2,9 +2,13 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "teachers")
+@Getter
+@Setter
 public class Teacher {
 
     @Id
@@ -22,6 +26,4 @@ public class Teacher {
 
     @OneToMany(mappedBy = "teacher")
     private Set<ClassEntity> classes;
-
-    // getter/setter
 }

@@ -2,9 +2,13 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "classes")
+@Getter
+@Setter
 public class ClassEntity {
 
     @Id
